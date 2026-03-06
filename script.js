@@ -18,3 +18,33 @@ function loadHTML(selector, url) {
 
 loadHTML("header", "/header.html");
 loadHTML("footer", "/footer.html");
+
+function contactUs() {
+  document.getElementById("contactModal").style.display = "block";
+}
+function contactUs(event) {
+  event.preventDefault(); // Prevents scrolling to the top
+  document.getElementById("contactModal").style.display = "block";
+}
+function makeCall() {
+  window.location.href = "tel:+16466005943";
+  closeModal();
+}
+
+function sendText() {
+  window.location.href = "sms:+16466005943";
+  closeModal();
+}
+
+function closeModal() {
+  document.getElementById("contactModal").style.display = "none";
+}
+
+window.onclick = function (event) {
+  let modal = document.getElementById("contactModal");
+  if (event.target === modal) {
+    closeModal();
+  }
+};
+
+

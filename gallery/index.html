@@ -1,0 +1,149 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="stylesheet" href="../style.css" />
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link 
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+  </head>
+  <body>
+    <header></header>
+
+<section class="gallery-page">
+  <h2>Some Examples of Our Work</h2>
+  <div class="gallery-layout">
+      <!-- First Big Image -->
+      <div class="big-image">
+          <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993993/gallery-big_ltsrlx.jpg" alt="Big Work Example 1">
+      </div>
+
+      <!-- First 4 Small Images (2x2 Grid) -->
+      <div class="small-images-grid">
+          <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994000/gallery1_ry2dx7.jpg" alt="Small Example 1">
+          <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994001/gallery2_ce61xi.jpg" alt="Small Example 2">
+          <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994002/gallery3_tlytye.jpg" alt="Small Example 3">
+          <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994004/gallery4_zpjrdr.jpg" alt="Small Example 4">
+      </div>
+
+      <!-- Second 4 Small Images (2x2 Grid) -->
+      <div class="small-images-grid">
+          <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994005/gallery5_pztwul.jpg" alt="Small Example 5">
+          <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994007/gallery6_p17rzy.jpg" alt="Small Example 6">
+          <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994008/gallery7_pvomkk.jpg" alt="Small Example 7">
+          <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994009/gallery8_gsv5ee.jpg" alt="Small Example 8">
+      </div>
+       <!-- Second Big Image -->
+       <div class="big-image">
+          <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993997/gallery-big2_td3qrb.jpg" alt="Big Work Example 2">
+      </div>
+  </div>
+
+  <div>
+      <h2>Take a Step Inside</h2>
+  </div>
+  <div class="gallery-inside">
+      
+      <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994013/inside-1_cnmd8c.jpg" alt="Interior 1" class="img-large">
+      <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994016/inside-2_q3uwgd.jpg" alt="Interior 2" class="img-small">
+      <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994017/inside-3_dr33hb.jpg" alt="Interior 3" class="img-small">
+      <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994021/inside-4_nympnl.jpg" alt="Interior 4" class="img-small">
+      <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762994024/inside-5_w0vg3t.jpg" alt="Interior 5" class="img-wide"> 
+  </div>
+  <a
+  href="https://www.fresha.com/a/yanas-nirvana-new-york-99-9th-street-ww3lady7"
+  target="_blank"
+  class="btn btn-secondary lead"
+  id="bookServiceBtn-service"
+  >BOOK A SERVICE
+  </a>
+</section>
+
+<div id="lightbox-modal" class="lightbox-modal">
+  <span class="close-lightbox">&times;</span>
+  <img class="lightbox-image" src="" alt="Full View" />
+  <div class="lightbox-nav">
+    <span class="prev">&#10094;</span>
+    <span class="next">&#10095;</span>
+  </div>
+</div>
+
+<script>
+  const galleryImages = document.querySelectorAll('.gallery-layout img, .gallery-inside img');
+  const lightboxModal = document.getElementById('lightbox-modal');
+  const lightboxImage = document.querySelector('.lightbox-image');
+  const closeBtn = document.querySelector('.close-lightbox');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+
+  let currentIndex = 0;
+  let images = [];
+
+  // Initialize image list
+  galleryImages.forEach((img, index) => {
+    images.push(img.src);
+    img.addEventListener('click', () => {
+      currentIndex = index;
+      openLightbox(images[currentIndex]);
+    });
+  });
+
+  function openLightbox(src) {
+    lightboxImage.src = src;
+    lightboxModal.style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    lightboxModal.style.display = 'none';
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImage.src = images[currentIndex];
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImage.src = images[currentIndex];
+  }
+
+  closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', showPrev);
+  nextBtn.addEventListener('click', showNext);
+
+  // Optional: close when clicking outside image
+  lightboxModal.addEventListener('click', (e) => {
+    if (e.target === lightboxModal) closeLightbox();
+  });
+
+  // Optional: Arrow key navigation
+  document.addEventListener('keydown', (e) => {
+    if (lightboxModal.style.display === 'flex') {
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'Escape') closeLightbox();
+    }
+  });
+</script>
+
+
+        
+    <footer></footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include header and footer -->
+    <script src="../script.js"></script>
+  </body>
+</html>

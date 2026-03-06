@@ -1,0 +1,313 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="stylesheet" href="../style.css" />
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link 
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+  </head>
+  <body>
+    <header></header>
+    
+    <script>
+    // Services 
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".dropbtn").forEach((button) => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            let dropdown = this.nextElementSibling;
+            
+            // Hide other open dropdowns
+            document.querySelectorAll(".dropdown-content").forEach(menu => {
+                if (menu !== dropdown) {
+                    menu.style.display = "none";
+                }
+            });
+  
+            // Toggle the clicked one
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        });
+    });
+  
+    // Close dropdown if clicking outside
+    document.addEventListener("click", function (event) {
+        if (!event.target.closest(".dropdown")) {
+            document.querySelectorAll(".dropdown-content").forEach(menu => {
+                menu.style.display = "none";
+            });
+        }
+    });
+  });
+  
+  // Service MODAL 
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("serviceModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDuration = document.getElementById("modalDuration");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalPrice = document.getElementById("modalPrice");
+    const closeModal = document.querySelector(".close");
+  
+    let activeDropdown = null; // Track open dropdown
+  
+    // Open modal and keep dropdown open
+    document.querySelectorAll(".service-item").forEach((item) => {
+        item.addEventListener("click", function (event) {
+            event.preventDefault();
+  
+            activeDropdown = this.closest(".dropdown").querySelector(".dropdown-content"); // Get dropdown content
+  
+            // Set modal content from data attributes
+            modalTitle.textContent = this.dataset.name;
+            modalDuration.textContent = this.dataset.duration;
+            modalDescription.textContent = this.dataset.description;
+            modalPrice.textContent = this.dataset.price;
+  
+            modal.style.display = "block";
+  
+            if (activeDropdown) {
+                activeDropdown.style.display = "block"; // Ensure dropdown stays open
+            }
+        });
+    });
+  
+    // Function to close modal but keep dropdown open
+    function closeModalHandler(event) {
+        event.stopPropagation(); // Prevent unwanted bubbling events
+        modal.style.display = "none";
+  
+        if (activeDropdown) {
+            activeDropdown.style.display = "block"; // Keep dropdown open
+        }
+    }
+  
+    // Close modal when clicking "X"
+    closeModal.addEventListener("click", closeModalHandler);
+  
+    // Close modal when clicking outside but keep dropdown open
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            closeModalHandler(event);
+        }
+    });
+  });
+</script>
+
+<div id="navbar-container"></div>
+    
+    <div class="service-container">
+    <h2 class="service-header">SERVICES WE EXCEL AT</h2>
+    
+    </div>
+    
+    <section class="service-menu">
+        <ul>
+            <li class="dropdown">
+                <div class="service-photo">
+                    <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993955/nails-service_cwwi5x.avif" alt="manicure">
+                </div>
+                <a href="#" class="dropbtn">Manicures</a>
+                <ul class="dropdown-content">
+                    <li><a href="#" class="service-item" data-name="Hard Gel Russian" data-duration="1 hr, 45 min" 
+                        data-description="An electric file is used for precise and detailed cuticle work with a hard gel overlay 
+                        to create a long-lasting manicure and a gel color if desired. Suitable for clients who want to do refills monthly and grow out their natural nails." 
+                        data-price="$80">Hard Gel Russian</a></li>
+                    <li><a href="#" class="service-item" data-name="Regular Gel Russian" data-duration="1 hr, 30 min" 
+                        data-description="An electric file is used for precise and detailed cuticle work with a gel polish/color on top. This differs from the Hard Gel Russian Manicure because it does not include an overlay of builder gel 
+                        (aka a hard gel) before the gel polish/color. This helps hold the nail stronger before your next fill. With the Regular Gel Russian Manicure, all of the 
+                        products need to be removed before every new manicure instead of getting a fill." 
+                        data-price="$65">Regular Gel Russian</a></li>
+                    <li><a href="#" class="service-item" data-name="No-Color Russian" data-duration="1 hr" 
+                        data-description="An electric file is used for precise and detailed cuticle work. No color is added for a natural look. I can add a clear strengthening polish or a shiny buff." 
+                        data-price="$50">No-Color Russian</a>
+                    </li>
+                    <li><a href="#" class="service-item" data-name="Extensions Set" data-duration="2 hr, 30 min" 
+                        data-description="Extensions built to your natural nails' length done by paper forms. This manicure includes a hard gel overlay with a gel color to finish if desired." 
+                        data-price="$130">Extensions Set</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <div class="service-photo">
+                    <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993957/pedi-service_gopdhk.jpg" alt="manicure">
+                </div>
+                <a href="#" class="dropbtn">Pedicures</a>
+                <ul class="dropdown-content">
+                    <li><a href="#" class="service-item" data-name="Russian Gel" data-duration="1 hr, 30 min" 
+                        data-description="An electric file is used to clean the skin around the nail and on the foot with precision. Finished with gel color." 
+                        data-price="$80">Russian Gel</a>
+                    </li>
+                    <li><a href="#" class="service-item" data-name="No Color Russian" data-duration="1hr" 
+                        data-description="An electric file is used to clean the skin around the nail and on the foot. Finished with no color to create natural, 
+                        healthy-looking nails. If you’d like to do regular polish, please bring a color/s of your choice!" 
+                        data-price="$60">No Color Russian</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <div class="service-photo">
+                    <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993949/add-on_epkonw.jpg" alt="manicure">
+                </div>
+                <a href="#" class="dropbtn">Add-Ons</a>
+                <ul class="dropdown-content">
+                    <li><a href="#" class="service-item" data-name="Nail Art (1 Nail)" data-duration="5 min" 
+                        data-description="Please add this service according to how many nails you'd like to have nail art on. 
+                        Price varies according to the difficulty of the art. Please message me directly for an estimate if needed." 
+                        data-price="From $3">Nail Art (1 Nail)</a>
+                    </li>
+                    <li><a href="#" class="service-item" data-name="Nail Art (10 Nails)" data-duration="30 min" 
+                        data-description="Nail art pricing and time depends on the complexity of the art. If you want an estimate of the price, 
+                        please message directly. This service only includes nail art. Please add it with a manicure service." 
+                        data-price="From $25">Nail Art (10 Nails)</a>
+                    </li>
+                    <li><a href="#" class="service-item" data-name="Regular Gel Removal" data-duration="15 min" 
+                        data-description="Please add this service if you need to remove regular gel color that has been done at another salon. No charge for removal of my work." 
+                        data-price="$10">Regular Gel Removal</a>
+                    </li>
+                    <li><a href="#" class="service-item" data-name="Acrylic/Dip/Hard-Gel/Gel-X Removal" data-duration="15 min" 
+                        data-description="Nail art pricing and time depends on the complexity of the art. If you want an estimate of the price, 
+                        please message directly. This service only includes nail art. Please add it with a manicure service." 
+                        data-price="$15">Acrylic/Dip/Hard-Gel/Gel-X Removal</a>
+                    </li>
+                    <li><a href="#" class="service-item" data-name="Nail Repair" data-duration="10 min" 
+                        data-description="If you have a broken nail, please add this service. I used hard gel to strengthen the nail and fix any cracks." 
+                        data-price="$5">Nail Repair</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <section class="services-section">
+        <p>We do not take walk-ins as this studio is located in a creative arts building. Please book by appointment!</p>
+    </section>
+    <!-- MODAL STRUCTURE -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p><strong>Duration:</strong> <span id="modalDuration"></span></p>
+            <p id="modalDescription"></p>
+            <p><strong>Price:</strong> <span id="modalPrice"></span></p>
+            <p>
+  <a
+    href="https://www.fresha.com/a/yanas-nirvana-new-york-99-9th-street-ww3lady7"
+    target="_blank"
+    class="service-modal-btn"
+  >
+    Book Now
+  </a>
+</p>
+        </div>
+    </div>
+  
+    <!-- Photo Section   -->
+    <section class="photo-service-section">
+        <div class="photo-service-grid">
+          <!-- Top Row -->
+          <div class="photo photo-top-left">
+            <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993959/service-1_qaeqkd.jpg" alt="design-1">
+          </div>
+      
+          <!-- Text Block in Middle -->
+          <div class="photo-service-text">
+            <!-- <p class="subtitle">The Best Service</p> -->
+            <h2 class="main-title">Give The Ultimate Shine To <br>Your Style With a Professional</h2>
+            <a 
+            href="https://www.fresha.com/a/yanas-nirvana-new-york-99-9th-street-ww3lady7"
+            target="_blank" 
+            class="learn-more-btn">BOOK A SERVICE
+            </a>
+          </div>
+      
+          <div class="photo photo-top-right">
+            <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993960/service-2_ldcynq.jpg" alt="design-2">
+          </div>
+      
+          <!-- Bottom Row -->
+          <div class="photo photo-bottom">
+            <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993961/service-3_spibxs.jpg" alt="design-3">
+          </div>
+          <div class="photo photo-bottom">
+            <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993962/service-4_xvwepo.jpg" alt="design-4">
+          </div>
+          <div class="photo photo-bottom">
+            <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993964/service-5_rvv0rw.jpg" alt="design-5">
+          </div>
+        </div>
+      </section>
+      
+    <!-- <a
+    href="https://www.fresha.com/a/yanas-nirvana-new-york-99-9th-street-ww3lady7"
+    target="_blank"
+    class="btn btn-secondary lead"
+    id="bookServiceBtn-service"
+    >BOOK A SERVICE
+    </a> -->
+    <section class="products-section">
+        <h2>OUR PRODUCTS</h2>
+    
+        <div class="product">
+            <div class="product-image">
+                <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993956/oil_bjyi6v.jpg" alt="Cuticle Oil Pen">
+            </div>
+            <div class="product-info">
+                <h3>Cuticle Oil Pen</h3>
+                <p>💅 A necessity for any manicure to last longer.</p>
+                <p>🛁 Apply whenever you feel dryness in your cuticles. Recommended to apply before bedtime.</p>
+                <p><strong>Ingredients:</strong> Olive oil, grapeseed oil, jojoba oil, tea tree oil, vitamin C, essential oil.</p>
+                <p><strong>Price:</strong> $10 <span class="highlight">(FREE for new clients!)</span></p>
+                <p><strong>Size:</strong> 4mL</p>
+            </div>
+        </div>
+      
+        <div class="product coming-soon">
+            <div class="product-image">
+                <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993951/body-scrub_g9uhfl.jpg" alt="Body Scrub">
+            </div>
+            <div class="product-info">
+                <h3>Body Scrub</h3>
+                <p>🛀 Coming soon!</p>
+            </div>
+        </div>
+    
+        <div class="product coming-soon">
+            <div class="product-image">
+                <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993953/lip-scrub_ba9zkf.jpg" alt="Lip Scrub">
+            </div>
+            <div class="product-info">
+                <h3>Lip Scrub</h3>
+                <p>💋 Coming soon!</p>
+            </div>
+        </div>
+    
+        <div class="product coming-soon">
+            <div class="product-image">
+                <img src="https://res.cloudinary.com/dpo4wcevn/image/upload/v1762993950/balm_gechmq.jpg" alt="Lip Balm">
+            </div>
+            <div class="product-info">
+                <h3>Lip Balm</h3>
+                <p>💄 Coming soon!</p>
+            </div>
+        </div>
+    </section>
+   
+    <footer></footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include header and footer -->
+    <script src="../script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="stylesheet" href="../style.css" />
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header></header>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".faq-question").forEach((question) => {
+        question.addEventListener("click", () => {
+          const answer = question.nextElementSibling;
+          const arrow = question.querySelector(".arrow");
+  
+          answer.style.display =
+            answer.style.display === "block" ? "none" : "block";
+          arrow.classList.toggle("rotate");
+        });
+      });
+    });
+  </script>
+
+<div class="contact-faq-wrapper">
+  <!-- Contact Section -->
+  <div class="contact-container">
+     <h2>We Are In Touch</h2>
+     <div class="contact-item">
+         
+         <div class="contact-details">
+             <span class="bold">Text or Call:</span> <a href="#" onclick="contactUs(event)">+1 (646) 600-5943</a>
+         </div>
+     </div>
+     <div class="contact-item">
+         
+         <div class="contact-details">
+             <span class="bold">Email:</span> <a href="mailto:yanasnirvana@gmail.com">yanasnirvana@gmail.com</a>
+         </div>
+     </div>
+     <div class="contact-item">
+         
+         <div class="contact-details">
+             <span class="bold">Instagram:</span> <a href="https://instagram.com/yanasnirvana" target="_blank">@yanasnirvana</a>
+         </div>
+     </div>
+     <div class="hours">
+         <h3>Business Hours</h3>
+         <p><strong>Tue, Thurs, Sat:</strong> 9 AM – 7 PM</p>
+         <p><strong>Mon, Wed, Fri, Sun:</strong> CLOSED</p>
+     </div>
+ </div>
+ 
+
+ <div class="faq-container">
+     <h2>Frequently Asked Questions</h2>
+ 
+     <div class="faq-item">
+         <div class="faq-question">
+             Where is this studio located?
+             <span class="arrow">&#9662;</span>
+         </div>
+         <div class="faq-answer">
+             The studio is located at 341 39th St in a neighborhood called Sunset Park in Brooklyn, New York.
+         </div>
+     </div>
+ 
+     <div class="faq-item">
+         <div class="faq-question">
+             What is a Russian manicure?
+             <span class="arrow">&#9662;</span>
+         </div>
+         <div class="faq-answer">
+             A Russian manicure is a technique that includes the use of a specialized electric manicure tool to remove cuticle buildup carefully.
+         </div>
+     </div>
+ 
+     <div class="faq-item">
+         <div class="faq-question">
+             What is the difference between hard and builder gel?
+             <span class="arrow">&#9662;</span>
+         </div>
+         <div class="faq-answer">
+             Builder gel can be a hard gel. Hard gel you can't soak off and have to file off whereas soft gel can be soaked off.
+         </div>
+     </div>
+
+     <div class="faq-item">
+        <div class="faq-question">
+            What is the difference between hard and regular gel?
+            <span class="arrow">&#9662;</span>
+        </div>
+        <div class="faq-answer">
+            <ul>
+                <p>Hard Gel</p>
+                <li>Thicker gel that protects nails and allows growth.</li>
+                <li>Needs to be refilled with each service.</li>
+                <li>Guaranteed to last 4-6 weeks.</li>
+            </ul>
+            <ul>
+                <p>Regular Gel</p>
+                <li>A gel color that is painted over regular base.</li>
+                <li>Needs to be removed completely for each service.</li>
+                <li>Guaranteed to last 2-4 weeks.</li>
+            </ul>
+        </div>
+    </div>
+ 
+     <div class="faq-item">
+         <div class="faq-question">
+             Do you charge for removals?
+             <span class="arrow">&#9662;</span>
+         </div>
+         <div class="faq-answer">
+             If the product was applied at our salon, we do not charge for removals.
+         </div>
+     </div>
+ 
+     <div class="faq-item">
+         <div class="faq-question">
+             Can I use my laptop or talk on the phone?
+             <span class="arrow">&#9662;</span>
+         </div>
+         <div class="faq-answer">
+             Yes, you are welcome to use your laptop or talk on the phone. We also provide a relaxing atmosphere with music and a TV.
+         </div>
+     </div>
+ </div>
+</div>
+
+<section class="contact-form">
+  <h2>Ready to <a href="https://www.fresha.com/a/yanas-nirvana-new-york-99-9th-street-ww3lady7" target="_blank"> Book</a> or Get Advice?</h2>
+  <p>Send us a message and we will get back to you as soon as possible. We love hearing from you.</p>
+
+  <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="8203eeff-9982-4eea-a578-e286489449b7">
+      <div class="input-group">
+          <input type="text" name="name" placeholder="Name *" required>
+      </div>
+      <div class="input-group">
+          <input type="email" name="email" placeholder="Email Address *" required>
+      </div>
+      <div class="input-group">
+          <input type="tel" name="phone" placeholder="Phone">
+      </div>
+      <div class="input-group">
+          <textarea name="message" placeholder="Message *" required></textarea>
+      </div>
+      <button type="submit" class="send-btn">SEND MESSAGE</button>
+  </form>
+</section>
+
+        
+    <footer></footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include header and footer -->
+    <script src="../script.js"></script>
+  </body>
+</html>
