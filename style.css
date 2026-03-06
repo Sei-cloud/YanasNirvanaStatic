@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Yeseva+One&display=swap');
+
 :root {
   --header-font: "Yeseva One", serif;
   --body-font: "Josefin Sans", sans-serif;
@@ -33,7 +33,7 @@
   box-sizing: border-box;
 }
 html, body {
-  font-family: var(--body-font);
+  font-family: var(--body-font) !important;
   margin: 0;
   padding: 0;
   background-color: var(--background-color);
@@ -48,7 +48,7 @@ body a {
 body h1,
 h2,
 h3 {
-  font-family: var(--header-font);
+  font-family: var(--header-font) !important;
 }
 .main {
   margin-top: 4em;
@@ -144,8 +144,8 @@ h3 {
   padding: 10px 5%;
 }
 .lead {
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 18px !important;
+  font-weight: 400 !important;
   max-width: 570px;
   padding: 15px;
   background: var(--navbar-color);
